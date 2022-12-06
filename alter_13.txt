@@ -1,0 +1,177 @@
+/* (Group_13), 2021 CSY1026 */
+
+/* to add primary key constraints */
+ALTER TABLE activities
+ADD CONSTRAINT pk_activities
+PRIMARY KEY (activity_id);
+
+ALTER TABLE stages
+ADD CONSTRAINT pk_stages
+PRIMARY KEY (stage_id);
+
+ALTER TABLE plans 
+ADD CONSTRAINT fk_p_activities
+FOREIGN KEY (activity_id)
+REFERENCES activities (activity_id);
+
+ALTER TABLE plans
+ADD CONSTRAINT fk_p_stages
+FOREIGN KEY (stage_id)
+REFERENCES stages (stage_id);
+
+ALTER TABLE plans
+ADD CONSTRAINT pk_plans
+PRIMARY KEY (activity_id, stage_id, plan_id);
+
+ALTER TABLE resources
+ADD CONSTRAINT pk_resources
+PRIMARY KEY (resource_id);
+
+ALTER TABLE activity_resources
+ADD CONSTRAINT fk_a_r_resources
+FOREIGN KEY (resource_id)
+REFERENCES resources (resource_id);
+
+ALTER TABLE activity_resources
+ADD CONSTRAINT pk_activity_resources
+PRIMARY KEY (resource_id, item_no);
+
+ALTER TABLE activity_resources
+ADD CONSTRAINT fk_a_r_activities
+FOREIGN KEY (activity_id)
+REFERENCES activities (activity_id);
+
+ALTER TABLE costs
+ADD CONSTRAINT pk_costs
+PRIMARY KEY (cost_id);
+
+ALTER TABLE costs
+ADD CONSTRAINT fk_c_activities
+FOREIGN KEY (activity_id)
+REFERENCES activities (activity_id);
+
+ALTER TABLE staffs
+ADD CONSTRAINT pk_staffs
+PRIMARY KEY (staff_id);
+
+ALTER TABLE roles
+ADD CONSTRAINT pk_roles
+PRIMARY KEY (role_id);
+
+ALTER TABLE staff_roles
+ADD CONSTRAINT fk_s_r_staffs
+FOREIGN KEY (staff_id)
+REFERENCES staffs (staff_id);
+
+ALTER TABLE staff_roles
+ADD CONSTRAINT fk_s_r_roles
+FOREIGN KEY (role_id)
+REFERENCES roles (role_id);
+
+ALTER TABLE staff_roles
+ADD CONSTRAINT pk_staff_roles
+PRIMARY KEY (staff_id, role_id, staff_role_id);
+
+ALTER TABLE groups
+ADD CONSTRAINT fk_g_activities
+FOREIGN KEY (activity_id)
+REFERENCES activities (activity_id);
+
+ALTER TABLE groups
+ADD CONSTRAINT fk_g_staff_roles
+FOREIGN KEY (staff_role_id, staff_id, role_id)
+REFERENCES staff_roles (staff_role_id, staff_id, role_id);
+
+ALTER TABLE groups
+ADD CONSTRAINT pk_groups
+PRIMARY KEY (activity_id, staff_role_id, group_id);
+
+ALTER TABLE reviews
+ADD CONSTRAINT pk_reviews
+PRIMARY KEY (review_id);
+
+ALTER TABLE reviews
+ADD CONSTRAINT fk_r_plans
+FOREIGN KEY (plan_id, stage_id, activity_id)
+REFERENCES plans (plan_id, stage_id, activity_id);
+
+ALTER TABLE reviews
+ADD CONSTRAINT fk_r_groups
+FOREIGN KEY (activity_id, staff_role_id, group_id)
+REFERENCES groups (activity_id, staff_role_id, group_id);
+
+ALTER TABLE actions
+ADD CONSTRAINT fk_a_reviews
+FOREIGN KEY (review_id)
+REFERENCES reviews (review_id);
+
+ALTER TABLE actions
+ADD CONSTRAINT pk_actions
+PRIMARY KEY (action_id);
+
+/* To add CHECK constraints */
+
+
+ALTER TABLE activities
+ADD CONSTRAINT ck_activities_name_upper
+CHECK (name = UPPER(name));
+
+ALTER TABLE resources
+ADD CONSTRAINT ck_resources_name_upper
+CHECK (resource_name = UPPER(resource_name));
+
+ALTER TABLE staffs
+ADD CONSTRAINT ck_staffs_first_name_upper
+CHECK (first_name = UPPER(first_name));
+
+ALTER TABLE staffs
+ADD CONSTRAINT ck_staffs_last_name_upper
+CHECK (last_name = UPPER(last_name));
+
+ALTER TABLE staffs
+ADD CONSTRAINT ck_staffs_gender
+CHECK (gender = 'M' OR gender = 'F');
+
+ALTER TABLE staff_roles
+ADD CONSTRAINT ck_staff_roles_duty_status
+CHECK (duty_status = 'Active');
+
+ALTER TABLE groups
+ADD CONSTRAINT ck_groups_status
+CHECK (status = 'Active');
+
+ALTER TABLE actions
+ADD CONSTRAINT ck_actions_owner_name_upper
+CHECK (owner_name = UPPER(owner_name));
+
+/*------To add UNIQUE CONSTRAINTS------ */
+
+ALTER TABLE resources
+ADD CONSTRAINT u_resources
+UNIQUE (resource_type);
+
+ALTER TABLE staffs
+ADD CONSTRAINT u_staffs
+UNIQUE (contact_number, email);
+
+ALTER TABLE roles
+ADD CONSTRAINT u_roles
+UNIQUE (role_type);
+
+/* to add default value */
+ALTER TABLE activities
+MODIFY start_date DEFAULT SYSDATE;
+
+ALTER TABLE stages
+MODIFY location DEFAULT 'UK';
+
+ALTER TABLE staffs
+MODIFY town DEFAULT 'BEDFORD';
+
+ALTER TABLE staffs
+MODIFY country DEFAULT 'UK';
+
+ALTER TABLE staffs
+MODIFY date_registered DEFAULT SYSDATE;
+
+

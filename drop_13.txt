@@ -1,0 +1,189 @@
+/* (Group_13), 2021 CSY1026 */
+
+
+/*----------DROP A FOREIGN KEY CONSTRANT------------*/
+ALTER TABLE actions
+DROP CONSTRAINT fk_a_reviews;
+
+ALTER TABLE reviews
+DROP CONSTRAINT fk_r_groups;
+
+ALTER TABLE reviews
+DROP CONSTRAINT fk_r_plans;
+
+ALTER TABLE groups
+DROP CONSTRAINT fk_g_staff_roles;
+
+ALTER TABLE groups
+DROP CONSTRAINT fk_g_activities;
+
+ALTER TABLE staff_roles
+DROP CONSTRAINT fk_s_r_staffs;
+
+ALTER TABLE staff_roles
+DROP CONSTRAINT fk_s_r_roles;
+
+ALTER TABLE costs
+DROP CONSTRAINT fk_c_activities;
+
+ALTER TABLE activity_resources
+DROP CONSTRAINT fk_a_r_activities;
+
+ALTER TABLE activity_resources
+DROP CONSTRAINT fk_a_r_resources;
+
+ALTER TABLE plans
+DROP CONSTRAINT fk_p_activities;
+
+ALTER TABLE plans
+DROP CONSTRAINT fk_p_stages;
+
+
+
+/*----------DROP PRIMARY KEY CONSTRANT------------*/
+
+ALTER TABLE actions
+DROP CONSTRAINT pk_actions;
+
+ALTER TABLE reviews
+DROP CONSTRAINT pk_reviews;
+
+ALTER TABLE groups
+DROP CONSTRAINT pk_groups;
+
+ALTER TABLE staff_roles
+DROP CONSTRAINT pk_staff_roles;
+
+ALTER TABLE roles
+DROP CONSTRAINT pk_roles;
+
+ALTER TABLE staffs
+DROP CONSTRAINT pk_staffs;
+
+ALTER TABLE costs
+DROP CONSTRAINT pk_costs;
+
+ALTER TABLE activity_resources
+DROP CONSTRAINT pk_activity_resources;
+
+ALTER TABLE resources
+DROP CONSTRAINT pk_resources;
+
+ALTER TABLE plans
+DROP CONSTRAINT pk_plans;
+
+ALTER TABLE stages
+DROP CONSTRAINT pk_stages;
+
+ALTER TABLE activities
+DROP CONSTRAINT pk_activities;
+
+
+/*----------DROP DEFAULT------------*/
+/*---DROPPING DEFAULT IS NOT GOOD IDEA SO SET IT TO NULL -----*/
+ALTER TABLE activities
+MODIFY start_date DEFAULT NULL;
+
+ALTER TABLE Stages
+MODIFY location DEFAULT NULL;
+
+ALTER TABLE Staffs
+MODIFY town DEFAULT NULL;
+
+ALTER TABLE Staffs
+MODIFY country DEFAULT NULL;
+
+ALTER TABLE Staffs
+MODIFY date_registered DEFAULT NULL;
+
+ALTER TABLE activities
+MODIFY start_date DEFAULT NULL;
+
+
+
+/*----------DROP A UNIQUE CONSTRAINT------------*/
+
+ALTER TABLE resources 
+DROP CONSTRAINT u_resources;
+
+ALTER TABLE staffs
+DROP CONSTRAINT u_staffs;
+
+ALTER TABLE roles
+DROP CONSTRAINT u_roles;
+
+/*---- TO DROP CHECK CONSTRAINT ----*/
+
+ALTER TABLE activities 
+DROP CONSTRAINT ck_activities_name_upper;
+
+ALTER TABLE resources
+DROP CONSTRAINT ck_resources_name_upper;
+
+ALTER TABLE staffs
+DROP CONSTRAINT ck_staffs_first_name_upper;
+
+ALTER TABLE staffs
+DROP CONSTRAINT ck_staffs_last_name_upper;
+
+ALTER TABLE staffs
+DROP CONSTRAINT ck_staffs_gender;
+
+ALTER TABLE staff_roles
+DROP CONSTRAINT ck_staff_roles_duty_status;
+
+ALTER TABLE groups
+DROP CONSTRAINT ck_groups_status;
+
+ALTER TABLE actions
+DROP CONSTRAINT ck_actions_owner_name_upper;
+
+
+/*----drop sequence----*/
+
+DROP SEQUENCE activity_sequence;
+DROP SEQUENCE stage_sequence;
+DROP SEQUENCE plan_sequence;
+DROP SEQUENCE resource_sequence;
+DROP SEQUENCE a_r_sequence;
+DROP SEQUENCE cost_sequence;
+DROP SEQUENCE staff_sequence;
+DROP SEQUENCE role_sequence;
+DROP SEQUENCE s_r_sequence;
+DROP SEQUENCE group_sequence;
+DROP SEQUENCE review_sequence;
+DROP SEQUENCE action_sequence;
+
+/*----------DROP TABLE ACTIVITIES------------*/
+/* PURGE doesnot send these tables to RECYCLEBIN */
+DROP TABLE Actions PURGE;
+DROP TABLE Reviews PURGE;
+DROP TABLE groups PURGE;
+DROP TABLE staff_roles PURGE;
+DROP TABLE roles PURGE;
+DROP TABLE staffs PURGE;
+DROP TABLE costs PURGE;
+DROP TABLE Activity_resources PURGE;
+DROP TABLE resources;
+DROP TABLE plans;
+DROP TABLE stages;
+DROP TABLE activities;
+
+
+/* Without droping each constraint we can directly delete table 
+by using CASCADE CONSTRAINT but it violates the rule of referential integrity so it 
+is not good pactice
+Eg:
+DROP TABLE activities CASCADE CONSTRAINT;
+DROP TABLE plans CASCADE CONSTRAINT;
+
+*/
+
+/* use */
+PURGE RECYCLEBIN;
+
+/* to empty RecycleBin */
+
+
+
+

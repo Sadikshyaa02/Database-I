@@ -1,0 +1,16 @@
+/* (Group_13), 2021 CSY1026 */
+
+/*---run cmd To create tables --- */
+@D:\dbassignment2\create_13.txt
+
+/*---run cmd to alter tables ----*/
+@D:\dbassignment2\alter_13.txt
+
+/*-----run cmd to insert values in tables --- */
+@D:\dbassignment2\insert_13.txt
+
+/*---run cmd for SELECT queries --- */
+@D:\dbassignment2\queries_13.txt
+
+/*--- run cmd to drop constraints, sequence, default, tables ---*/
+@D:\dbassignment2\drop_13.txt

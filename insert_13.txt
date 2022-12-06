@@ -1,0 +1,72 @@
+/* (Group_13), 2021 CSY1026 */
+
+INSERT INTO Activities (activity_id, name, start_date) VALUES (activity_sequence.nextval, 'GAME DEVELOPMENT', '07AUG19');  
+INSERT INTO STAGES (stage_id, stage_type, location) VALUES (stage_sequence.nextval, 'development', 'NORTHAMPTON');  
+INSERT INTO PLANS (activity_id, stage_id, plan_id, start_date, end_date) VALUES (activity_sequence.currval, stage_sequence.currval, plan_sequence.nextval , '05JAN19', '05JAN20');  
+INSERT INTO STAFFS (staff_id, first_name, last_name, contact_number, email, town, country, date_registered, gender) VALUES (staff_sequence.nextval, 'AYUSH', 'SHRESTHA', '9843243245', 'ayus@gmail.com', 'NORTHAMPTON', 'UK', '01JAN17', 'M');
+INSERT INTO ROLES (role_id, role_type, description) VALUES (role_sequence.nextval, 'Management', 'You have to manage projects');
+INSERT INTO Staff_roles (staff_id, role_id, staff_role_id, started_date, duty_status) VALUES (staff_sequence.currval, role_sequence.currval, s_r_sequence.nextval, '05JAN19', 'Active');
+INSERT INTO Groups (activity_id, staff_role_id, group_id, staff_id, role_id, status, group_size) VALUES (activity_sequence.currval, s_r_sequence.currval, group_sequence.nextval, staff_sequence.currval, role_sequence.currval, 'Active', 10);
+INSERT INTO RESOURCES (resource_id, resource_name, resource_type, description, item_cost) VALUES (resource_sequence.nextval, 'IR12', 'software', 'IR12for working of software', '123456');
+INSERT INTO Activity_resources (activity_id, resource_id, item_no, item_required, item_quantity) VALUES (activity_sequence.currval , resource_sequence.currval, 10, 'SOFTWARE', '100' );
+INSERT INTO COSTS (activity_id, cost_id, item_description, amount) VALUES (activity_sequence.currval, cost_sequence.nextval, 'Power supply', '100');
+INSERT INTO Reviews (plan_id, stage_id, activity_id, staff_role_id, group_id, review_id, time, location) VALUES (plan_sequence.currval, stage_sequence.currval, activity_sequence.currval, s_r_sequence.currval, group_sequence.currval, review_sequence.nextval, '07AUG19:12:22:58', 'NORTHAMPTON');
+INSERT INTO Actions (review_id, action_id, owner_name, deadline) VALUES (review_sequence.currval, action_sequence.nextval, 'AMIR', '12OCT18');
+
+
+INSERT INTO Activities (activity_id, name, start_date) VALUES (activity_sequence.nextval, 'WEB DESIGN', '05JUL21' ); 
+INSERT INTO STAGES(stage_id, stage_type, location) VALUES (stage_sequence.nextval, 'testing', 'NEPAL');
+INSERT INTO PLANS (activity_id, stage_id, plan_id, start_date, end_date) VALUES (activity_sequence.currval, stage_sequence.currval, plan_sequence.nextval, '12JUL20', '07MAR21');   
+INSERT INTO STAFFS (staff_id, first_name, last_name, contact_number, email, town, country, date_registered, gender) VALUES (staff_sequence.nextval, 'SIDDHARTH', 'TAMANG', '9832432427', 'sidd@gmail.com', 'BEDFORD', 'UK', '01FEB21', 'M');
+INSERT INTO ROLES (role_id, role_type, description) VALUES (role_sequence.nextval, 'Editor', 'For fixing bug of program' );
+INSERT INTO Staff_roles (staff_id, role_id, staff_role_id, started_date, duty_status) VALUES (staff_sequence.currval, role_sequence.currval, s_r_sequence.nextval, '12APR21', 'Active');
+INSERT INTO Groups (activity_id, staff_role_id, group_id, staff_id, role_id, status, group_size) VALUES (activity_sequence.currval, s_r_sequence.currval, group_sequence.nextval, staff_sequence.currval, role_sequence.currval, 'Active', 2);
+INSERT INTO RESOURCES (resource_id, resource_name, resource_type, description, item_cost) VALUES (resource_sequence.nextval, 'GO', 'training', 'To train newcommers', '34456');
+INSERT INTO Activity_resources (resource_id, item_no, item_required, item_quantity) VALUES (resource_sequence.currval, 14, 'MIC', '2000');
+INSERT INTO COSTS (activity_id, cost_id, item_description, amount) VALUES (activity_sequence.currval, cost_sequence.nextval, 'MIC for demo', '2000');
+INSERT INTO Reviews (review_id, time, location) VALUES ( review_sequence.nextval,'15JAN21:06:22:22','UK');
+INSERT INTO Actions (review_id, action_id, owner_name, deadline) VALUES (review_sequence.currval, action_sequence.nextval,'AMIR', '20DEC21');
+
+
+INSERT INTO Activities (activity_id, name, start_date) VALUES (activity_sequence.nextval, 'PROGRAM TESTING', '19JAN20');
+INSERT INTO STAGES (stage_id, stage_type, location) VALUES (stage_sequence.nextval, 'designing', 'NORTHAMPTON'); 
+INSERT INTO PLANS (activity_id, stage_id, plan_id, start_date, end_date) VALUES (activity_sequence.currval, stage_sequence.currval, plan_sequence.nextval, '05AUG19', '07AUG19'); 
+INSERT INTO STAFFS (staff_id, first_name, last_name, contact_number, email, town, country, date_registered, gender) VALUES (staff_sequence.nextval, 'SANDEEPA', 'ACHARYA', '9865656544', 'sandeepa@gmail.com', 'SAKHU', 'NEPAL', '19MAR19', 'F');
+INSERT INTO ROLES (role_id, role_type, description) VALUES (role_sequence.nextval, 'Director', 'To direct project in best way');
+INSERT INTO Staff_roles (staff_id, role_id, staff_role_id, started_date, duty_status) VALUES (staff_sequence.currval, role_sequence.currval, s_r_sequence.nextval, '05AUG21', 'Active');
+INSERT INTO Groups (activity_id, staff_role_id, group_id, status, group_size) VALUES (activity_sequence.currval, s_r_sequence.currval, group_sequence.nextval, 'Active', 18);
+INSERT INTO RESOURCES (resource_id, resource_name, resource_type, description, item_cost) VALUES (resource_sequence.nextval, 'PC', 'management','PC is computer system', '12356');
+INSERT INTO Activity_resources (resource_id, item_no, item_required, item_quantity) VALUES (resource_sequence.currval, 12, 'PLATNUM', '2500');
+INSERT INTO COSTS (activity_id, cost_id, item_description, amount) VALUES (activity_sequence.currval, cost_sequence.nextval, 'Camera', '2500');
+INSERT INTO Reviews (review_id, time, location) VALUES ( review_sequence.nextval,'28DEC20:12:10:15', 'NEPAL');
+INSERT INTO Actions (review_id, action_id, owner_name, deadline) VALUES (review_sequence.currval, action_sequence.nextval,'SIDDHARTH', '10JAN19');
+
+INSERT INTO Activities (activity_id, name, start_date) VALUES (activity_sequence.nextval, 'GAME TESTING', '05MAR20');  
+INSERT INTO STAGES (stage_id, stage_type, location) VALUES (stage_sequence.nextval, 'testing', 'NORTHAMPTON');  
+INSERT INTO PLANS (activity_id, stage_id, plan_id, start_date, end_date) VALUES (activity_sequence.currval, stage_sequence.currval, plan_sequence.nextval, '14MAR17', '14OCT22');  
+INSERT INTO STAFFS (staff_id, first_name, last_name, contact_number, email, town, country, date_registered, gender) VALUES (staff_sequence.nextval, 'RABIN', 'JOSHI', '9875465232', 'rabin@gmail.com', 'MULPANI', 'USA', '21JUL21', 'M');
+INSERT INTO ROLES (role_id, role_type, description) VALUES (role_sequence.nextval, 'Host', 'To host some programs');
+INSERT INTO Staff_roles (staff_id, role_id, staff_role_id, started_date, duty_status) VALUES (staff_sequence.currval, role_sequence.currval, s_r_sequence.nextval, '19NOV20', 'Active');
+INSERT INTO Groups (activity_id, staff_role_id, group_id, status, group_size) VALUES (activity_sequence.currval, s_r_sequence.currval, group_sequence.nextval, 'Active', 38);
+INSERT INTO RESOURCES (resource_id, resource_name, resource_type, description, item_cost) VALUES (resource_sequence.nextval, 'MIC', 'demo', 'MIC to demo of project', '123456');
+INSERT INTO Activity_resources (activity_id, resource_id, item_no, item_required, item_quantity) VALUES (activity_sequence.currval, resource_sequence.currval, 15, 'DIAMOND', '5000');
+INSERT INTO COSTS (activity_id, cost_id, item_description, amount) VALUES (activity_sequence.currval, cost_sequence.nextval, 'demo slides','5000');
+INSERT INTO Reviews (plan_id, group_id, review_id, time, location) VALUES (plan_sequence.currval, group_sequence.currval, review_sequence.nextval,'12NOV18:10:35:57', 'NORTHAMPTON');
+INSERT INTO Actions (review_id, action_id, owner_name, deadline) VALUES (review_sequence.currval, action_sequence.nextval, 'SIDDHARTH', '22MAR22');
+
+
+INSERT INTO Activities (activity_id, name, start_date) VALUES (activity_sequence.nextval, 'APP DEVELOPMENT', '07AUG22');
+INSERT INTO STAGES (stage_id, stage_type, location) VALUES (stage_sequence.nextval, 'development', 'NEPAL');
+INSERT INTO PLANS (activity_id, stage_id, plan_id, start_date, end_date) VALUES (activity_sequence.currval, stage_sequence.currval, plan_sequence.nextval, '18AUG21', '21NOV21');
+INSERT INTO STAFFS (staff_id, first_name, last_name, contact_number, email, town, country, date_registered, gender) VALUES (staff_sequence.nextval, 'RAJ', 'GURUNG', '9865624725', 'raj@gmail.com', 'KATHMANDU', 'NEPAL', '20APR21', 'M'); 
+INSERT INTO ROLES (role_id, role_type, description) VALUES (role_sequence.nextval, 'Programming', 'To code some program');
+INSERT INTO Staff_roles (staff_id, role_id, staff_role_id, started_date, duty_status) VALUES (staff_sequence.currval, role_sequence.currval, s_r_sequence.nextval, '15DEC21', 'Active');
+INSERT INTO Groups (activity_id, staff_role_id, group_id, staff_id, role_id, status, group_size) VALUES (activity_sequence.currval, s_r_sequence.currval, group_sequence.nextval, staff_sequence.currval, role_sequence.currval, 'Active', 100);
+INSERT INTO RESOURCES (resource_id, resource_name, resource_type, description, item_cost) VALUES (resource_sequence.nextval, 'CAM', 'present', 'CAMERA for presentation', '123456');
+INSERT INTO Activity_resources (resource_id,item_no, item_required, item_quantity) VALUES (resource_sequence.currval, 11, 'CRYPTO', '10000');
+INSERT INTO COSTS (activity_id, cost_id, item_description, amount) VALUES (activity_sequence.currval, cost_sequence.nextval, 'pc to manage', '10000');
+INSERT INTO Reviews (plan_id, stage_id, activity_id, staff_role_id, group_id, review_id, time, location) VALUES (plan_sequence.currval, stage_sequence.currval, activity_sequence.currval, s_r_sequence.currval, group_sequence.currval, review_sequence.nextval,'15OCT22', 'KATHMANDU');
+INSERT INTO Actions (action_id, owner_name, deadline) VALUES (action_sequence.nextval, 'AYUSH', '13FEB21');
+
+
+   

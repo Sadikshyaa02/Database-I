@@ -1,0 +1,275 @@
+/* (Group_13), 2021 CSY1026 */
+
+/*----------CREATING TABLE ACTIVITIES------------*/
+
+
+CREATE TABLE Activities(
+	          activity_id NUMBER(2),
+	          name VARCHAR2(20), start_date DATE);
+
+
+
+
+/*----------CREATING TABLE Stages------------*/
+
+CREATE TABLE Stages(
+              stage_id NUMBER(2),
+              stage_type VARCHAR2(15) NOT NULL,
+              location VARCHAR2 (15));			  
+
+
+
+
+/*----------CREATING TABLE PLANS------------*/
+CREATE TABLE plans(
+activity_id NUMBER(2), stage_id NUMBER(2), plan_id NUMBER(4), start_date DATE NOT NULL, end_date DATE NOT NULL);
+
+/* PRIMARY KEY and FOREIGN KEY can be defined at the time of creating table 
+but it is not good practice.
+CREATE TABLE PLANS(
+		  activity_id NUMBER(2),
+		  stage_id NUMBER(2),
+		  plan_id NUMBER(4),
+		  start_date DATE NOT NULL,
+		  end_date DATE NOT NULL,
+		  CONSTRAINT pk_plans PRIMARY KEY (plan_id),
+		  CONSTRAINT fk_p_activities
+			FOREIGN KEY (activity_id)
+			REFERENCES activities(activity_id),
+		  CONSTRAINT fk_p_stages
+			FOREIGN KEY (stage_id)
+			REFERENCES stages(stage_id));
+
+
+*/
+
+		  
+/*----------CREATING TABLE RESOURCES------------*/
+
+CREATE TABLE RESOURCES(
+                     resource_id NUMBER(2),
+                     resource_name VARCHAR2(8),
+                     resource_type VARCHAR2(10),
+                     description VARCHAR2(30) NOT NULL,
+                     item_cost NUMBER(6));
+
+
+
+
+
+/*----------CREATING TABLE ACTIVITY_RESOURCES------------*/
+
+CREATE TABLE ACTIVITY_RESOURCES(activity_id NUMBER(2), resource_id NUMBER(2), item_no NUMBER(3),
+                            item_required VARCHAR2(10) NOT NULL,
+			    item_quantity NUMBER(6) NOT NULL);
+
+
+
+
+
+
+/*----------CREATING TABLE COSTS------------*/
+
+CREATE TABLE COSTS(
+	  activity_id NUMBER(2) NOT NULL,
+ 	  cost_id NUMBER(2),
+	  item_description VARCHAR2(15),
+	  amount NUMBER(8));
+
+
+/*----------CREATING TABLE STAFFS------------*/
+
+CREATE TABLE STAFFS(
+		 staff_id NUMBER(2),
+		 first_name VARCHAR2(10),
+		 last_name VARCHAR2(10),
+		 contact_number NUMBER(11) NOT NULL,
+		 email VARCHAR2(35),
+		 town VARCHAR2(15),
+		 country VARCHAR(15),
+		 date_registered DATE,
+		 gender CHAR(1));
+
+
+
+/*----------CREATING TABLE ROLES------------*/
+
+CREATE TABLE ROLES(
+		role_id NUMBER(2),
+		role_type VARCHAR2(12),
+		description VARCHAR2(30) NOT NULL);
+
+
+ 
+
+
+/*----------CREATING TABLE STAFF_ROLES------------*/
+
+CREATE TABLE STAFF_ROLES(
+			staff_id NUMBER(2), role_id NUMBER(2),
+			staff_role_id NUMBER(4),
+			started_date DATE NOT NULL,
+			duty_status VARCHAR2(12));
+
+
+
+
+
+
+/*----------CREATING TABLE GROUPS------------*/
+
+CREATE TABLE groups(
+	activity_id NUMBER(2), staff_role_id NUMBER(4), group_id NUMBER(6),
+	staff_id NUMBER(2), role_id NUMBER(2),
+	status VARCHAR2(10), group_size NUMBER(3) NOT NULL );
+
+
+
+
+/*----------CREATING TABLE REVIEWS------------*/
+
+CREATE TABLE REVIEWS(
+		  plan_id NUMBER(4), stage_id NUMBER(2), activity_id NUMBER(2), staff_role_id NUMBER(4), group_id NUMBER(6),
+		  review_id NUMBER(2),
+		  time TIMESTAMP NOT NULL,
+		  location VARCHAR2(12) NOT NULL );
+
+
+
+
+
+/*----------CREATING TABLE ACTIONS------------*/
+
+CREATE TABLE ACTIONS(
+		   review_id NUMBER(2), action_id NUMBER(2),
+		   owner_name VARCHAR2(12),
+		   deadline DATE NOT NULL);
+
+
+/*----------CREATING SEQUQNCE TABLE ACTIVITIES------------*/
+
+CREATE SEQUENCE Activity_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+
+/*----------CREATING SEQUQNCE TABLE STAGE------------*/
+
+CREATE SEQUENCE Stage_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+
+/*----------CREATING SEQUQNCE TABLE PLANS------------*/
+
+CREATE SEQUENCE Plan_sequence
+  START WITH 11
+  INCREMENT BY 1
+  MINVALUE 11
+  MAXVALUE 1010
+  CACHE 10;
+
+
+/*----------CREATING SEQUQNCE TABLE RESOURCES------------*/
+
+CREATE SEQUENCE Resource_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+/*---ACTIVITY_RESOURCES sequence ---*/
+CREATE SEQUENCE a_r_sequence
+  START WITH 11
+  INCREMENT BY 1
+  MINVALUE 11
+  MAXVALUE 101
+  CACHE 10;
+
+
+/*----------CREATING SEQUQNCE TABLE COSTS------------*/
+
+CREATE SEQUENCE Cost_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+/*----------CREATING SEQUQNCE TABLE STAFFS------------*/
+
+CREATE SEQUENCE STAFF_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+/*----------CREATING SEQUENCE TABLE ROLES------------*/
+
+CREATE SEQUENCE Role_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+/*---staff_roles sequence ---*/
+CREATE SEQUENCE s_r_sequence
+ START WITH 11
+ INCREMENT BY 1
+ MINVALUE 11
+ MAXVALUE 1010
+ CACHE 10;
+
+/*----------CREATING SEQUENCE TABLE GROUPS------------*/
+
+CREATE SEQUENCE Group_sequence
+  START WITH 111
+  INCREMENT BY 1
+  MINVALUE 111
+  MAXVALUE 101010
+  CACHE 10;
+
+
+/*----------CREATING SEQUENCE TABLE REVIEWS------------*/
+
+CREATE SEQUENCE review_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+/*-----action sequence --- */
+CREATE SEQUENCE action_sequence
+  START WITH 1
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 10
+  CACHE 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
